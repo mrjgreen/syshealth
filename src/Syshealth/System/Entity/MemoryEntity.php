@@ -18,18 +18,18 @@ class MemoryEntity
 
     public function __construct($memoryTotal, $memoryFree, $memoryCached, $swapTotal, $swapFree)
     {
-        $this->memoryTotal = $memoryTotal;
+        $this->memoryTotal = (int)$memoryTotal;
 
-        $this->memoryUsed = $memoryTotal - $memoryFree;
+        $this->memoryCached = (int)$memoryCached;
 
-        $this->memoryCached = $memoryCached;
+        $this->memoryFree = (int)$memoryFree;
 
-        $this->memoryFree = $memoryFree;
+        $this->memoryUsed = $this->memoryTotal - $this->memoryFree;
 
-        $this->swapUsed = $swapTotal - $swapFree;
+        $this->swapTotal = (int)$swapTotal;
 
-        $this->swapTotal = $swapTotal;
+        $this->swapFree = (int)$swapFree;
 
-        $this->swapFree = $swapFree;
+        $this->swapUsed = $this->swapTotal - $this->swapFree;
     }
 }

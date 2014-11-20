@@ -50,7 +50,7 @@ class SystemEntity
 
         $this->hostIp = $hostIp;
 
-        $this->uptimeSeconds = $uptimeSeconds;
+        $this->uptimeSeconds = (int)$uptimeSeconds;
 
         $this->loadAverage = $loadAverage;
 

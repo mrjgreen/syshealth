@@ -26,21 +26,21 @@ class CpuEntity
     {
         $this->number = $number;
 
-        $this->usr = $usr;
+        $this->usr = (float)$usr;
 
-        $this->nice = $nice;
+        $this->nice = (float)$nice;
 
-        $this->sys = $sys;
+        $this->sys = (float)$sys;
 
-        $this->irq = $irq;
+        $this->irq = (float)$irq;
 
-        $this->soft = $soft;
+        $this->soft = (float)$soft;
 
-        $this->steal = $steal;
+        $this->steal = (float)$steal;
 
-        $this->guest = $guest;
+        $this->guest = (float)$guest;
 
-        $this->idle = $idle;
+        $this->idle = (float)$idle;
 
         $this->used = 100 - $idle;
     }
