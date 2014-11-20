@@ -37,11 +37,11 @@ class Request
         $this->pass = $pass;
     }
 
-    public function post($url, array $payload = array())
+    public function post(array $payload = array())
     {
         $protocol = $this->secure ? 'https' : 'http';
 
-        $host = $protocol . '://' . $this->endPoint . '/' . $url;
+        $host = $protocol . '://' . $this->endPoint;
         // Setup cURL
         $ch = curl_init($host);
 
