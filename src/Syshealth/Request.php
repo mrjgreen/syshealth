@@ -25,7 +25,7 @@ class Request
 
     public function __construct($endPoint, $secure = false)
     {
-        $this->endPoint = $endPoint;
+        $this->endPoint = rtrim($endPoint, '/');
 
         $this->secure = $secure;
     }
@@ -37,11 +37,11 @@ class Request
         $this->pass = $pass;
     }
 
-    public function post(array $payload = array())
+    public function post($url, array $payload = array())
     {
         $protocol = $this->secure ? 'https' : 'http';
 
-        $host = $protocol . '://' . $this->endPoint;
+        $host = $protocol . '://' . $this->endPoint . '/' . $url;
         // Setup cURL
         $ch = curl_init($host);
 

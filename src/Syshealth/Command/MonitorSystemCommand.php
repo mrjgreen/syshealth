@@ -104,16 +104,12 @@ class MonitorSystemCommand extends Command
     {
         $data = $this->formatter->format($data);
 
-        $payLoad = array(
-            'id' => $serverId,
-            'data' => $data
-        );
-
-        $this->request->post($payLoad);
+        $this->request->post($serverId, array('data' => $data));
 
         if($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE)
         {
-            $this->output->writeln($payLoad);
+            $this->output->writeln($serverId);
+            $this->output->writeln($data);
         }
     }
 
