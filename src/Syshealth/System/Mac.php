@@ -2,12 +2,12 @@
 
 use Syshealth\System\DataSource\Host;
 use Syshealth\System\DataSource\LoadAverage;
-use Syshealth\System\DataSource\Unix\Linux\Cpu;
+use Syshealth\System\DataSource\Unix\Mac\Cpu;
 use Syshealth\System\DataSource\Unix\Disk;
-use Syshealth\System\DataSource\Unix\Linux\Memory;
-use Syshealth\System\DataSource\Unix\Linux\Uptime;
+use Syshealth\System\DataSource\Unix\Mac\Memory;
+use Syshealth\System\DataSource\Unix\Mac\Uptime;
 
-class Linux extends SystemAbstract
+class Mac extends SystemAbstract
 {
     public function __construct()
     {
