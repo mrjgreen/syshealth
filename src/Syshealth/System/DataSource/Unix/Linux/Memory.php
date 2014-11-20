@@ -15,6 +15,6 @@ class Memory extends DataSourceAbstract
     {
         $data = $this->readData();
 
-        return new MemoryEntity($data['MemTotal'], $data['MemFree'], $data['MemCached'], $data['SwapTotal'], $data['SwapFree']);
+        return new MemoryEntity($data['MemTotal'], $data['MemFree'], $data['Cached'], $data['SwapTotal'], $data['SwapFree']);
     }
 }
