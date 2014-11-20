@@ -140,7 +140,7 @@ require 'phar://{$this->pharName}/{$entryPath}';
 __HALT_COMPILER();";
     }
 }
-$name = 'appmonitor';
+$name = 'appmonitor-agent';
 $root = __DIR__ . '/../';
 $compile = new Compiler($root . 'bin/' . $name, array($root . 'bin', $root . 'src', $root . 'vendor'));
 $compile->compile($name . '.phar');
