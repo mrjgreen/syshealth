@@ -37,7 +37,7 @@ class MonitorSystemCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('system')
+            ->setName('run')
             ->setDescription('Collects system information and sends to the endpoint specified')
             ->addArgument('server-id', InputArgument::REQUIRED, 'The server id generated on the system interface')
             ->addArgument('endpoint', InputArgument::REQUIRED, 'The host address of the post data endpoint')

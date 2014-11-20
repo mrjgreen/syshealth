@@ -7,7 +7,7 @@ use Syshealth\System\Entity\CpuEntity;
 
 class Cpu extends DataSourceAbstract
 {
-    const SKIP_FIRST_LINES = 3;
+    const SKIP_FIRST_LINES = 2;
 
     public function __construct()
     {
