@@ -51,6 +51,11 @@ class Request
             CURLOPT_POSTFIELDS => $payload
         ));
 
+        if($this->secure)
+        {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        }
+
         if($this->user)
         {
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
