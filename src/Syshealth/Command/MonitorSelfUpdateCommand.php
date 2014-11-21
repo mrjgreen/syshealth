@@ -43,7 +43,7 @@ class MonitorSelfUpdateCommand extends Command
             }
             else
             {
-                $output->writeln('<comment>Update could not be written</comment>');
+                $output->writeln('<comment>Update could not be written to ' . __FILE__ . '</comment>');
             }
         }
         else
