@@ -9,18 +9,20 @@ class Network extends DataSourceAbstract
 {
     public function __construct()
     {
-        parent::__construct('cat /proc/net/dev', new NetParser());
+        //parent::__construct('cat /proc/net/dev', new NetParser());
     }
 
     public function getNetworkUsage()
     {
-        $data = $this->readData();
+        $data = array(
+            array('em1', 0, 0)
+        );
 
-        $cpus = array_map(function($row){
+        $network = array_map(function($row){
             return $this->createEntity($row);
         }, $data);
 
-        return array(array_shift($cpus), $cpus);
+        return $network;
     }
 
     private function createEntity($row)
