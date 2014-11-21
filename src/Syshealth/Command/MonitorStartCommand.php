@@ -84,7 +84,7 @@ class MonitorStartCommand extends MonitorAbstractCommand
             }
         }
 
-        $command = "$string > /dev/null 2>&1 & echo $!";
+        $command = "$string > $logfile 2>&1 & echo $!";
 
         $processId = exec($command);
 
