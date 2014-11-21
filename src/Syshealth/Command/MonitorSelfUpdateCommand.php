@@ -7,7 +7,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class MonitorSelfUpdateCommand extends Command
 {
-    const SOURCE = '';
+    const SOURCE = 'https://github.com/mrjgreen/syshealth/blob/master/build/appmonitor-agent.phar?raw=true';
 
     protected function configure()
     {
