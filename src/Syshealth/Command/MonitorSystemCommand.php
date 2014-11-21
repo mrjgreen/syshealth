@@ -41,7 +41,7 @@ class MonitorSystemCommand extends Command
             ->setDescription('Collects system information and sends to the endpoint specified')
             ->addArgument('server-id', InputArgument::REQUIRED, 'The server id generated on the system interface')
             ->addArgument('endpoint', InputArgument::REQUIRED, 'The host address of the post data endpoint')
-            ->addOption('parameters', 'a',InputOption::VALUE_IS_ARRAY, 'An optional key:value set of parameters to pass in the request')
+            ->addOption('parameters', 'a',InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'An optional key:value set of parameters to pass in the request')
             ->addOption('secure','s', InputOption::VALUE_NONE, 'Use HTTPS to send the data')
             ->addOption('os','o', InputOption::VALUE_REQUIRED, 'The operating system driver to use linux/mac', 'linux')
             ->addOption('auth.user','u', InputOption::VALUE_REQUIRED, 'Use basic auth and authenticate with this user')
