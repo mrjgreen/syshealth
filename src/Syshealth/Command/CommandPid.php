@@ -2,5 +2,5 @@
 
 class CommandPid
 {
-    CONST PID_FILE = '/tmp/appmonitor-agent.pid';
+    CONST PID_FILE = '/var/run/appmonitor-agent.pid';
 }
