@@ -12,4 +12,5 @@ $application = new Application('System Info');
 $application->add(new MonitorStartCommand());
 $application->add(new MonitorStopCommand());
 $application->add(new MonitorSystemCommand());
+$application->add(new MonitorSelfUpdateCommand());
 $application->run();

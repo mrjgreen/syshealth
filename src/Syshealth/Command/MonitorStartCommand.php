@@ -11,7 +11,7 @@ class MonitorStartCommand extends MonitorAbstractCommand
     protected function configure()
     {
         $this
-            ->addOption('pidfile', null, InputOption::VALUE_OPTIONAL, 'The Name of the pid file to use', CommandPid::PID_FILE)
+            ->addOption('pidfile', null, InputOption::VALUE_REQUIRED, 'The Name of the pid file to use', CommandPid::PID_FILE)
         ;
 
         parent::configure();
