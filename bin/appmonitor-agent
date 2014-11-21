@@ -9,5 +9,7 @@ if (file_exists($packageAutoloader)) {
     require_once $standaloneAutoloader;
 }
 $application = new Application('System Info');
+$application->add(new MonitorStartCommand());
+$application->add(new MonitorStopCommand());
 $application->add(new MonitorSystemCommand());
 $application->run();
