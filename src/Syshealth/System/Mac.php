@@ -5,6 +5,7 @@ use Syshealth\System\DataSource\LoadAverage;
 use Syshealth\System\DataSource\Unix\Mac\Cpu;
 use Syshealth\System\DataSource\Unix\Disk;
 use Syshealth\System\DataSource\Unix\Mac\Memory;
+use Syshealth\System\DataSource\Unix\Mac\Network;
 use Syshealth\System\DataSource\Unix\Mac\Uptime;
 
 class Mac extends SystemAbstract
@@ -17,7 +18,8 @@ class Mac extends SystemAbstract
             new Disk(),
             new Uptime(),
             new Host(),
-            new Memory()
+            new Memory(),
+            new Network()
         );
     }
 }

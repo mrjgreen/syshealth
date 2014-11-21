@@ -17,7 +17,9 @@ class SystemAbstract implements SystemInterface
 
     protected $memory;
 
-    public function __construct($cpu, $loadAverage, $disk, $uptime, $host, $memory)
+    protected $network;
+
+    public function __construct($cpu, $loadAverage, $disk, $uptime, $host, $memory, $network)
     {
         $this->cpu = $cpu;
 
@@ -30,6 +32,8 @@ class SystemAbstract implements SystemInterface
         $this->host = $host;
 
         $this->memory = $memory;
+
+        $this->network = $network;
     }
 
     /**
@@ -47,7 +51,8 @@ class SystemAbstract implements SystemInterface
             $this->memory->getMemoryInfo(),
             $cpuAll,
             $cpus,
-            $this->disk->getDiskUsage()
+            $this->disk->getDiskUsage(),
+            $this->network->getNetworkUsage()
         );
     }
 }

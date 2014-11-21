@@ -44,7 +44,12 @@ class SystemEntity
      */
     public $disks;
 
-    public function __construct($hostName, $hostIp, $uptimeSeconds, LoadAverageEntity $loadAverage, MemoryEntity $memoryEntity, CpuEntity $cpu, array $cpus,  array $disks)
+    /**
+     * @var array
+     */
+    public $networkInterfaces;
+
+    public function __construct($hostName, $hostIp, $uptimeSeconds, LoadAverageEntity $loadAverage, MemoryEntity $memoryEntity, CpuEntity $cpu, array $cpus,  array $disks, array $networkInterfaces)
     {
         $this->hostName = $hostName;
 
@@ -61,5 +66,7 @@ class SystemEntity
         $this->cpus = $cpus;
 
         $this->cpu = $cpu;
+
+        $this->networkInterfaces = $networkInterfaces;
     }
 }

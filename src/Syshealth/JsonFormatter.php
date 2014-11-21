@@ -37,7 +37,8 @@ class JsonFormatter
             'cpu_usage'         => $systemEntity->cpu->used,
             'uptime_seconds'    => $systemEntity->uptimeSeconds,
             'disks'             => $systemEntity->disks,
-            'cpus'              => $systemEntity->cpus
+            'cpus'              => $systemEntity->cpus,
+            'network'           => $systemEntity->networkInterfaces
         );
     }
 }

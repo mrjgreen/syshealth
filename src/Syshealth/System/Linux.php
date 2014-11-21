@@ -5,6 +5,7 @@ use Syshealth\System\DataSource\LoadAverage;
 use Syshealth\System\DataSource\Unix\Linux\Cpu;
 use Syshealth\System\DataSource\Unix\Disk;
 use Syshealth\System\DataSource\Unix\Linux\Memory;
+use Syshealth\System\DataSource\Unix\Linux\Network;
 use Syshealth\System\DataSource\Unix\Linux\Uptime;
 
 class Linux extends SystemAbstract
@@ -17,7 +18,8 @@ class Linux extends SystemAbstract
             new Disk(),
             new Uptime(),
             new Host(),
-            new Memory()
+            new Memory(),
+            new Network()
         );
     }
 }
