@@ -10,12 +10,13 @@ class MonitorStartCommand extends MonitorAbstractCommand
 
     protected function configure()
     {
+        parent::configure();
+
         $this
+            ->setDescription('Starts the system info collection daemon')
             ->addOption('pidfile', null, InputOption::VALUE_REQUIRED, 'The name of the pid file to use', CommandPid::PID_FILE)
             ->addOption('logfile', null, InputOption::VALUE_REQUIRED, 'Log output to file')
         ;
-
-        parent::configure();
     }
 
     /**
