@@ -98,7 +98,7 @@ class MonitorSystemCommand extends Command
 
         foreach($params as $param)
         {
-            $parts = explode(':', $param, 1);
+            $parts = explode(':', $param, 2);
 
             if(count($parts) === 2)
             {
