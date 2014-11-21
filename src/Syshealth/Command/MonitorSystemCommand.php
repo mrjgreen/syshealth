@@ -41,6 +41,7 @@ class MonitorSystemCommand extends Command
             ->setDescription('Collects system information and sends to the endpoint specified')
             ->addArgument('server-id', InputArgument::REQUIRED, 'The server id generated on the system interface')
             ->addArgument('endpoint', InputArgument::REQUIRED, 'The host address of the post data endpoint')
+            ->addOption('parameters', 'a',InputOption::VALUE_IS_ARRAY, 'An optional key:value set of parameters to pass in the request')
             ->addOption('secure','s', InputOption::VALUE_NONE, 'Use HTTPS to send the data')
             ->addOption('os','o', InputOption::VALUE_REQUIRED, 'The operating system driver to use linux/mac', 'linux')
             ->addOption('auth.user','u', InputOption::VALUE_REQUIRED, 'Use basic auth and authenticate with this user')
@@ -69,12 +70,14 @@ class MonitorSystemCommand extends Command
 
         $system = $this->getSystemDriver($input->getOption('os'));
 
+        $parameters = $this->parseParameters($input->getOption('parameters'));
+
         while(1)
         {
             try {
                 $systemDetail = $this->runSystemCheck($system);
 
-                $this->postData($systemDetail, $input->getArgument('server-id'), $input->getArgument('endpoint'));
+                $this->postData($systemDetail, $input->getArgument('server-id'), $parameters);
             }
             catch(\Exception $e)
             {
@@ -83,6 +86,27 @@ class MonitorSystemCommand extends Command
 
             sleep($input->getOption('interval'));
         }
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     */
+    private function parseParameters(array $params)
+    {
+        $paramsFinal = array();
+
+        foreach($params as $param)
+        {
+            $parts = explode(':', $param, 1);
+
+            if(count($parts) === 2)
+            {
+                $paramsFinal[$parts[0]] = $parts[1];
+            }
+        }
+
+        return $paramsFinal;
     }
 
     /**
@@ -100,14 +124,14 @@ class MonitorSystemCommand extends Command
      * @throws \Syshealth\RequestCurlException
      * @throws \Syshealth\RequestHttpException
      */
-    private function postData($data, $serverId)
+    private function postData($data, $serverId, array $parameters)
     {
         $data = $this->formatter->format($data);
 
         $payLoad = array(
             'id' => $serverId,
             'data' => $data
-        );
+        ) + $parameters;
 
         $this->request->post($payLoad);
 
