@@ -11,7 +11,8 @@ class MonitorStartCommand extends MonitorAbstractCommand
     protected function configure()
     {
         $this
-            ->addOption('pidfile', null, InputOption::VALUE_REQUIRED, 'The Name of the pid file to use', CommandPid::PID_FILE)
+            ->addOption('pidfile', null, InputOption::VALUE_REQUIRED, 'The name of the pid file to use', CommandPid::PID_FILE)
+            ->addOption('logfile', null, InputOption::VALUE_REQUIRED, 'Log output to file')
         ;
 
         parent::configure();
@@ -70,13 +71,26 @@ class MonitorStartCommand extends MonitorAbstractCommand
 
         $string = $_SERVER['argv'][0] . ' run ' . $string;
 
+        $logfile = '/dev/null';
+
+        if($input->getOption('logfile'))
+        {
+            $logfile = $input->getOption('logfile');
+
+            if(!touch($logfile))
+            {
+                $output->writeln('<comment>Logfile ' . $logfile . ' could not be created. Permissions?</comment>');
+                die();
+            }
+        }
+
         $command = "$string > /dev/null 2>&1 & echo $!";
 
         $processId = exec($command);
 
         $this->writePid($file, $processId);
 
-        $output->writeln('<comment>Daemon started with PID: ' . $processId . '</comment>');
+        $output->writeln('<info>Daemon started with PID: ' . $processId . '</info>');
 
     }
 
