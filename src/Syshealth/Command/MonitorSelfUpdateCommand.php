@@ -26,7 +26,16 @@ class MonitorSelfUpdateCommand extends Command
     {
         $file = @file_get_contents(self::SOURCE);
 
-        $oldFile = @file_get_contents(__FILE__);
+        $runningPhar = \Phar::running(false);
+
+        if(!$runningPhar)
+        {
+            $output->writeln('<comment>Not running phar</comment>');
+
+            return;
+        }
+
+        $oldFile = @file_get_contents($runningPhar);
 
         if($file === $oldFile)
         {
@@ -37,13 +46,13 @@ class MonitorSelfUpdateCommand extends Command
 
         if($file)
         {
-            if(@file_put_contents(__FILE__, $file) !== false)
+            if(@file_put_contents($runningPhar, $file) !== false)
             {
                 $output->writeln('<info>File updated to latest version</info>');
             }
             else
             {
-                $output->writeln('<comment>Update could not be written to ' . __FILE__ . '</comment>');
+                $output->writeln('<comment>Update could not be written to ' . $runningPhar . '</comment>');
             }
         }
         else
