@@ -13,6 +13,9 @@ Call directly
     
 Optionally make the command available globally
 
+    wget https://github.com/mrjgreen/syshealth/raw/master/build/appmonitor-agent.phar -O appmonitor-agent.phar
+    chmod a+x appmonitor-agent.phar
     sudo mv appmonitor-agent.phar /usr/bin/appmonitor-agent
+
     #Call from anywhere using:
     appmonitor-agent serverid hostendpoint --options
