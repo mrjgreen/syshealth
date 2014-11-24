@@ -38,7 +38,7 @@ class Cpu extends DataSourceAbstract
         $totalCpu = array_sum($row) ?: 1;
 
         return array_map(function($val) use($totalCpu){
-            return $val/$totalCpu;
+            return round($val / $totalCpu * 100, 2);
         }, $row);
     }
 }
