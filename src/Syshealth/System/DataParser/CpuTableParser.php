@@ -2,6 +2,11 @@
 
 class CpuTableParser extends TableParser
 {
+    public function __construct()
+    {
+        parent::__construct(0, false);
+    }
+
     protected function parseTableLine($line, $isHeader = false)
     {
         /**
