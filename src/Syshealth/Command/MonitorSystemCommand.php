@@ -111,12 +111,12 @@ class MonitorSystemCommand extends MonitorAbstractCommand
             'data' => $data
         ) + $parameters;
 
-        $this->request->post($payLoad);
-
         if($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE)
         {
             $this->output->writeln($payLoad);
         }
+
+        $this->request->post($payLoad);
     }
 
     /**
