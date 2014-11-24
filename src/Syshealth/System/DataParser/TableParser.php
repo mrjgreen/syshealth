@@ -36,9 +36,10 @@ class TableParser implements ParserInterface
 
         foreach($lines as $line)
         {
-            $cols = $this->parseTableLine($line);
-
-            $final[] = $headings ? array_combine($headings, $cols) : $cols;
+            if(($cols = $this->parseTableLine($line)) !== false)
+            {
+                $final[] = $headings ? array_combine($headings, $cols) : $cols;
+            }
         }
 
         return $final;

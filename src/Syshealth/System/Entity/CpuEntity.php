@@ -22,7 +22,7 @@ class CpuEntity
 
     public $used;
 
-    public function __construct($number, $usr, $nice, $sys, $irq, $soft, $steal, $guest, $idle)
+    public function __construct($number, $usr, $nice, $sys, $iowait, $irq, $soft, $steal, $guest, $idle)
     {
         $this->number = $number;
 
@@ -35,6 +35,8 @@ class CpuEntity
         $this->irq = (float)$irq;
 
         $this->soft = (float)$soft;
+
+        $this->iowait = (float)$iowait;
 
         $this->steal = (float)$steal;
 
