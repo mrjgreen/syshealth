@@ -1,7 +1,5 @@
 <?php namespace Syshealth\System\DataSource\Unix\Mac;
 
-use Syshealth\System\DataParser\NetParser;
-use Syshealth\System\DataSource\DataSourceAbstract;
 use Syshealth\System\Entity\NetworkInterfaceEntity;
 
 

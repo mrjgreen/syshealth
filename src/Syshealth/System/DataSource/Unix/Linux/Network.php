@@ -1,32 +1,17 @@
 <?php namespace Syshealth\System\DataSource\Unix\Linux;
 
-use Syshealth\System\DataParser\NetParser;
-use Syshealth\System\DataSource\DataSourceAbstract;
 use Syshealth\System\Entity\NetworkInterfaceEntity;
 
 
-class Network extends DataSourceAbstract
+class Network
 {
-    public function __construct()
-    {
-        //parent::__construct('cat /proc/net/dev', new NetParser());
-    }
-
     public function getNetworkUsage()
     {
-        $data = array(
-            array('em1', 0, 0)
-        );
-
-        $network = array_map(function($row){
-            return $this->createEntity($row);
-        }, $data);
-
-        return $network;
+        return array($this->createEntity());
     }
 
-    private function createEntity($row)
+    private function createEntity()
     {
-        return new NetworkInterfaceEntity($row[0], $row[1], $row[2]);
+        return new NetworkInterfaceEntity(0,0,0);
     }
 }
