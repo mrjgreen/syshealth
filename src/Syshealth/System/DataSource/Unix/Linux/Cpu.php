@@ -25,9 +25,6 @@ class Cpu extends DataSourceAbstract
 
     private function createEntity($row)
     {
-        isset($row[8]) or $row[8] = 0;
-        isset($row[9]) or $row[9] = 0;
-
         $pcent = $this->calculatePercentage(array_slice($row, 1));
 
         return new CpuEntity($row[0], $pcent[0], $pcent[1], $pcent[2], $pcent[4], $pcent[5], $pcent[6], $pcent[7], $pcent[8], $pcent[3]);
